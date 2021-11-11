@@ -9,7 +9,7 @@ app.use(bodyParser.json())
 app.use('/cims', cimsRouter)
 
 app.use('/', (req, res)=>{
-    res.send("Home")
+    res.send("HomePage")
 })
 
 app.listen(3000, ()=> console.log("Server Started"))
