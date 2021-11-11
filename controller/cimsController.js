@@ -10,17 +10,10 @@ export const cimsGet = async(req, res)=>{
         res.status(500).send(error)
     }
 }
-
-export const cimsPost = async(req, res)=>{
-    const {CompanyUID, CompanyName, PrimaryContact} = req.body
-
-    try {
-        const newComp = await Comp.create({CompanyUID, CompanyName, PrimaryContact})
-        res.json(newComp)
-    } catch (err) {
-        console.log(err)
-    }
+export const cimsPost = (req, res)=>{
+    res.send("Post record in cims")
 }
+
 
 export const cimsDel = (req, res)=>{
     res.send("Delete record in cims")
