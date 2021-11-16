@@ -1,5 +1,20 @@
 import { Comp } from "../model/compSchema.js"
 
+
+export const cimsGet = (req, res)=>{
+    res.send("Get record in cims")
+}
+
+export const cimsPost = async(req, res)=>{
+    const {CompanyUID, CompanyName, PrimaryContact, SecondaryContact, TertiaryContact} = req.body
+
+    try {
+        const newComp = await Comp.create({CompanyUID, CompanyName, PrimaryContact, SecondaryContact, TertiaryContact})
+        res.json(newComp)
+    } catch (err) {
+        console.log(err)
+    }
+=======
 export const cimsGet = async(req, res)=>{
     const {CompanyUID, CompanyName, PrimaryContact} = req.body
 
@@ -12,6 +27,7 @@ export const cimsGet = async(req, res)=>{
 }
 export const cimsPost = (req, res)=>{
     res.send("Post record in cims")
+
 }
 
 
