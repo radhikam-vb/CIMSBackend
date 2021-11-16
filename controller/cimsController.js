@@ -5,10 +5,10 @@ export const cimsGet = (req, res)=>{
 }
 
 export const cimsPost = async(req, res)=>{
-    const {CompanyUID, CompanyName, PrimaryContact} = req.body
+    const {CompanyUID, CompanyName, PrimaryContact, SecondaryContact, TertiaryContact} = req.body
 
     try {
-        const newComp = await Comp.create({CompanyUID, CompanyName, PrimaryContact})
+        const newComp = await Comp.create({CompanyUID, CompanyName, PrimaryContact, SecondaryContact, TertiaryContact})
         res.json(newComp)
     } catch (err) {
         console.log(err)
