@@ -29,6 +29,7 @@ export const compSchema = new mongoose.Schema({
         OtherContactNumber: Number
     }
 })
+export const Comp=mongoose.model('Comp',compSchema)
 
 
 
