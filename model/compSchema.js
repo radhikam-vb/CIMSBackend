@@ -30,12 +30,3 @@ export const compSchema = new mongoose.Schema({
     }
 })
 
-export const Comp = mongoose.model('Comp', compSchema)
-
-    CompanyUID:'string',
-    CompanyName:'string',
-    PrimaryContact:'string'
-})
-
-export const Comp = mongoose.model('Comp', compSchema)
-
