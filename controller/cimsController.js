@@ -1,6 +1,6 @@
 import { Comp } from "../model/compSchema.js"
 export const cimsGet = async(req, res)=>{
-    const {Designation, BrandName, ClientName, Domain, BaseLocation, CompanyAddress, Contacts }=req.body
+    const {designation, brandName, clientName, domain, baseLocation, companyAddress, contacts}=req.body
 
     try {
         const Comps = await Comp.find();
@@ -11,10 +11,10 @@ export const cimsGet = async(req, res)=>{
 }
 
 export const cimsPost = async(req, res)=>{
-    const {Designation, BrandName, ClientName, Domain, BaseLocation, CompanyAddress, Contacts}=req.body
+    const {designation, brandName, clientName, domain, baseLocation, companyAddress, contacts}=req.body
 
     try {
-        const newComp = await Comp.create({Designation, BrandName, ClientName, Domain, BaseLocation, CompanyAddress, Contacts })
+        const newComp = await Comp.create({designation, brandName, clientName, domain, baseLocation, companyAddress, contacts})
         res.json(newComp)
     } catch (err) {
         console.log(err)
