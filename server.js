@@ -23,7 +23,7 @@ app.post('/login', (req, res)=>{
     const username = req.body.username
     const user = {name: username}
 
-    const token = jsonwebtoken.sign(user,process.env.TOKEN_SECRET, {expiresIn: '30s'})
+    const token = jsonwebtoken.sign(user,process.env.TOKEN_SECRET, {expiresIn: '3600s'})
     res.json({ Token: token})
 
 })

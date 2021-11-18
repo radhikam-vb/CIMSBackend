@@ -6,11 +6,11 @@ import { cimsGet, cimsDel, cimsPost, cimsPatch } from '../controller/cimsControl
 
 router.get('/',authenticateToken, cimsGet)
 
-router.post('/', cimsPost)
+router.post('/',authenticateToken, cimsPost)
 
-router.delete('/', cimsDel)
+router.delete('/',authenticateToken, cimsDel)
 
-router.patch('/', cimsPatch)
+router.patch('/',authenticateToken, cimsPatch)
 
 function authenticateToken(req, res, next){
     const authHeader = req.headers['authorization']
