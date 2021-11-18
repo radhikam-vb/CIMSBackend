@@ -13,17 +13,18 @@ mongoose.connect(db).then(() =>
 ).catch((err) => console.log('err'))
 
 const app = express()
-
 app.use(express.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 app.use('/cims', cimsRouter)
 
-app.get('/login', (req, res)=>{
-    //const username = req.body.username
-    //const user = {name: username}
+app.post('/login', (req, res)=>{
+    const username = req.body.username
+    var user = {name: username}
 
-    const token = jsonwebtoken.sign({name: "Dummy Username"},process.env.TOKEN_SECRET, {expiresIn: '3600s'})
+    if(username == null) user = {name : "Dummy username"}
+
+    const token = jsonwebtoken.sign(user,process.env.TOKEN_SECRET, {expiresIn: '3600s'})
     res.json({ Token: token})
 
 })
