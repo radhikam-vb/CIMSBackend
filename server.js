@@ -19,11 +19,11 @@ app.use(bodyParser.json())
 
 app.use('/cims', cimsRouter)
 
-app.post('/login', (req, res)=>{
-    const username = req.body.username
-    const user = {name: username}
+app.get('/login', (req, res)=>{
+    //const username = req.body.username
+    //const user = {name: username}
 
-    const token = jsonwebtoken.sign(user,process.env.TOKEN_SECRET, {expiresIn: '3600s'})
+    const token = jsonwebtoken.sign({name: "Dummy Username"},process.env.TOKEN_SECRET, {expiresIn: '3600s'})
     res.json({ Token: token})
 
 })
