@@ -32,7 +32,8 @@ app.post('/login', (req, res)=>{
 
 app.get('/location', async (req, res)=>{
     const pincode = req.headers.pincode
-    const url = `https://api.postalpincode.in/pincode/${pincode}`
+    const country = req.headers.country
+    const url = `https://api.worldpostallocations.com/pincode?postalcode=${pincode}&countrycode=${country}`
     const fetch_res = await fetch(url)
     const data = await fetch_res.json()
     res.json(data) 
