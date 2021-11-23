@@ -4,6 +4,7 @@ import cimsRouter from './routes/cims.js'
 import mongoose from 'mongoose'
 import jsonwebtoken from 'jsonwebtoken'
 import dotenv from "dotenv"
+import fetch from "node-fetch"
 
 dotenv.config()
 
@@ -27,6 +28,14 @@ app.post('/login', (req, res)=>{
     const token = jsonwebtoken.sign(user,process.env.TOKEN_SECRET, {expiresIn: '3600s'})
     res.json({ Token: token})
 
+})
+
+app.get('/location', async (req, res)=>{
+    const pincode = req.headers.pincode
+    const url = `https://api.postalpincode.in/pincode/${pincode}`
+    const fetch_res = await fetch(url)
+    const data = await fetch_res.json()
+    res.json(data) 
 })
 
 app.use('/', (req, res) => {
