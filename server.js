@@ -5,6 +5,7 @@ import mongoose from 'mongoose'
 import jsonwebtoken from 'jsonwebtoken'
 import dotenv from "dotenv"
 import fetch from "node-fetch"
+import lookup from "country-code-lookup"
 
 dotenv.config()
 
@@ -33,7 +34,7 @@ app.post('/login', (req, res)=>{
 app.get('/location', async (req, res)=>{
     const pincode = req.headers.pincode
     const country = req.headers.country
-    const url = `https://api.worldpostallocations.com/pincode?postalcode=${pincode}&countrycode=${country}`
+    const url = `https://api.worldpostallocations.com/pincode?postalcode=${pincode}&countrycode=${lookup.byCountry(country).iso2}`
     const fetch_res = await fetch(url)
     const data = await fetch_res.json()
     res.json(data) 
