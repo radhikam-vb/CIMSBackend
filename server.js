@@ -6,6 +6,7 @@ import jsonwebtoken from 'jsonwebtoken'
 import dotenv from "dotenv"
 import fetch from "node-fetch"
 import lookup from "country-code-lookup"
+import { getCountries } from 'country-state-picker'
 
 dotenv.config()
 
@@ -34,10 +35,15 @@ app.post('/login', (req, res)=>{
 app.get('/location', async (req, res)=>{
     const pincode = req.headers.pincode
     const country = req.headers.country
-    const url = `https://api.worldpostallocations.com/pincode?postalcode=${pincode}&countrycode=${lookup.byCountry(country).iso2}`
+    const url = `https://api.worldpostallocations.com/pincode?postalcode=${pincode}&countrycode=${country}`
     const fetch_res = await fetch(url)
     const data = await fetch_res.json()
     res.json(data) 
+})
+
+app.get('/countries', async (req, res)=>{
+    const countries = getCountries()
+    res.json(countries)
 })
 
 app.use('/', (req, res) => {
