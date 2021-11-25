@@ -5,7 +5,6 @@ import mongoose from 'mongoose'
 import jsonwebtoken from 'jsonwebtoken'
 import dotenv from "dotenv"
 import fetch from "node-fetch"
-import lookup from "country-code-lookup"
 import { getCountries } from 'country-state-picker'
 
 dotenv.config()
