@@ -41,20 +41,12 @@ app.get('/location', async (req, res)=>{
     
     const location = await fetch_res.json()
     const state = location.result[0].state
-    //const postalLocations = location.result.map(dists => {
-            //if(dists.district == "East Delhi")
-            //{
-              //  console.log(dists.postalLocation)
-                //return dists.postalLocation
-            //}
-        //})
 
         const districts = location.result.reduce(function(result, current) {
             result[current.district] = result[current.district] || [];
             result[current.district].push(current.postalLocation);
             return result;
         }, {})
-    
 
     const data = new Object({
         state,
